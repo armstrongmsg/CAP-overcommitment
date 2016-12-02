@@ -15,11 +15,11 @@ conf.intervals <- data %>% group_by(cap_a, cap_b) %>% summarise(mean_time_a = me
                                              upper_time_b = wilcox.test(total_time_b, conf.int = TRUE)$conf.int[2]) 
 
 set1 <- subset(conf.intervals, select = c(cap_a, cap_b, mean_time_b, lower_time_b, upper_time_b))
-set1$instance = rep("B", 6)
+set1$instance = rep("B", 9)
 colnames(set1) <- c("cap_a", "cap_b", "mean_time", "lower_time", "upper_time", "instance")
 
 set2 <- subset(conf.intervals, select = c(cap_a, cap_b, mean_time_a, lower_time_a, upper_time_a))
-set2$instance = rep("A", 6)
+set2$instance = rep("A", 9)
 colnames(set2) <- c("cap_a", "cap_b", "mean_time", "lower_time", "upper_time", "instance")
 
 final_intervals <- rbind(set1, set2)
