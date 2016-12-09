@@ -71,12 +71,12 @@ function run {
 
 N=$1
 TIMES=$2
-INSTANCE_A_IP="192.168.122.94"
-INSTANCE_B_IP="192.168.122.202"
-INSTANCE_A="ubuntu"
-INSTANCE_B="ubuntu1"
-VM_A_USER="ubuntu"
-VM_B_USER="ubuntu"
+INSTANCE_A_IP="192.168.122.23"
+INSTANCE_B_IP="192.168.122.210"
+INSTANCE_A="overcommitment1"
+INSTANCE_B="overcommitment2"
+VM_A_USER="armstrong"
+VM_B_USER="armstrong"
 LOG_FILE="results.csv"
 
 echo "Setting affinities"
@@ -85,21 +85,21 @@ limit_affinity $INSTANCE_A $INSTANCE_B
 log "cap_a,cap_b,total_time_a,total_time_b,cpu_usage"
 
 echo "Running with conf:CAP A=100%, CAP B=100%"
-#run 100 100 $TIMES
+run 100 100 $TIMES
 echo "Running with conf:CAP A=100%, CAP B=50%"
-#run 100 50 $TIMES
+run 100 50 $TIMES
 echo "Running with conf:CAP A=50%, CAP B=50%"
-#run 50 50 $TIMES
+run 50 50 $TIMES
 echo "Running with conf:CAP A=70%, CAP B=30%"
-#run 70 30 $TIMES
+run 80 20 $TIMES
 echo "Running with conf:CAP A=50%, CAP B=30%"
-#run 50 30 $TIMES
+run 50 30 $TIMES
 echo "Running with conf:CAP A=80%, CAP B=60%"
-#run 80 60 $TIMES
+run 80 60 $TIMES
 echo "Running with conf:CAP A=30%, CAP B=30%"
-#run 30 30 $TIMES
+run 30 30 $TIMES
 echo "Running with conf:CAP A=70%, CAP B=40%"
-#run 70 40 $TIMES
+run 70 40 $TIMES
 echo "Running with conf:CAP A=100%, CAP B=30%"
 run 100 30 $TIMES
 
